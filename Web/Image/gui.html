@@ -11,7 +11,7 @@
     Transform: <input type="text" id="transform" value="horizontal"> <br>
     Alg: <input type="text" id="alg" value=""> Invert:<input type="checkbox" id="invert"> <br>
     <button onclick="generate()"> Generate </button>
-    <br><img style="height:20em" id="image" src="/image/generator?puzzle=sq1&amp;stage=full&amp;transform=horizontal&amp;alg=/">
+    <br><img style="height:20em" id="image" src="/generator?puzzle=sq1&amp;stage=full&amp;transform=horizontal&amp;alg=/">
 
     <script>
         var parameters = ["puzzle", "stage", "transform"]
@@ -21,13 +21,16 @@
         }
 
         function generate() {
-            var source = "/image/generator?";
+            var source = "/generator?";
+
             for (var i = 0; i < parameters.length; i++) {
                 source += addParameter(parameters[i]) + "&";
             }
+
             document.getElementById("invert").checked
-            ? source += "case=" + document.getElementById("alg").value
-            : source += addParameter("alg");
+                ? source += "case=" + document.getElementById("alg").value
+                : source += addParameter("alg");
+
             document.getElementById("image").src = source;
         }
     </script>

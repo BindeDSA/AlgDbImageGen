@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using PuzzleImageGenerator.Shared;
+
 namespace PuzzleImageGenerator.Mega
 {
     class MegaImageConfiguration : ImageConfiguration
@@ -16,7 +13,9 @@ namespace PuzzleImageGenerator.Mega
             {
                 switch (command.Key)
                 {
-                    case "scheme": Scheme = command.Value; break;
+                    case "scheme":
+                        Scheme = command.Value;
+                        break;
                 }
             }
         }

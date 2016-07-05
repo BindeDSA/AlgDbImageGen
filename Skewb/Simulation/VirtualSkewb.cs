@@ -17,27 +17,31 @@ namespace PuzzleImageGenerator.Skewb.Simulation
         {
             CleanSkewb();
             DefineMoves();
+
             if (configs.Moves != null)
-                preformAlg(configs.Moves);       
+                preformAlg(configs.Moves);
             else if (configs.Case != null)
                 preformAlg(configs.Case, reverse: true);
 
             if (configs.StickerDefs == null)
                 SetDefs(configs);
         }
-        private void CleanSkewb()
+
+        void CleanSkewb()
         {
             Corners = Corner.PieceNames.Select(z => new Corner(z)).ToArray();
             Centers = Center.PieceNames.Select(z => new Center(z)).ToArray();
         }
-        private void DefineMoves()
+
+        void DefineMoves()
         {
             foreach (var move in Move.Set)
                 Moves.Add(move, new Move(move));
             foreach (var rotation in Rotation.Set)
                 Moves.Add(rotation, new Rotation(rotation));
         }
-        private char GetColorFromFace(char face)
+
+        char GetColorFromFace(char face)
         {
             var count = 0;
             foreach (var faceVal in Center.PieceNames)
@@ -48,17 +52,18 @@ namespace PuzzleImageGenerator.Skewb.Simulation
             }
             return '*';
         }
-        private void PreformMove(char moveChar, bool reverse)
+
+        void PreformMove(char moveChar, bool reverse)
         {
             var move = Moves[moveChar];
             if (reverse)
             {
                 Centers.ReverseCycle(move.Centers);
                 Corners.ReverseCycle(move.Corners[0].Take(3).ToArray());
+
                 foreach (var Index in move.Corners[0].Take(3))
-                {
                     Corners[Index].Rotate(clockwise: true);
-                }
+
                 Corners[move.Corners[0].Last()].Rotate(clockwise: false);
             }
             else
@@ -72,7 +77,8 @@ namespace PuzzleImageGenerator.Skewb.Simulation
                 Corners[move.Corners[0].Last()].Rotate(clockwise: true);
             }
         }
-        private void preformRotation(char rotationChar, bool reverse, bool twice)
+
+        void preformRotation(char rotationChar, bool reverse, bool twice)
         {
             var rotation = Moves[rotationChar];
             if (reverse)
@@ -84,7 +90,6 @@ namespace PuzzleImageGenerator.Skewb.Simulation
                     if (rotationChar != 'y')
                         for (int index = 0; index < cycle.Length; index++)
                             Corners[cycle[index]].Rotate(index % 2 == 1);
-
                 }
             }
             else
@@ -102,33 +107,37 @@ namespace PuzzleImageGenerator.Skewb.Simulation
                 }
             }
         }
-        private void preformAlg(string Alg, bool reverse = false)
+
+        void preformAlg(string alg, bool reverse = false)
         {
-            Alg = Alg.Replace(" ", "");
+            alg = alg.Replace(" ", "");
             var moves = new List<string>();
             string move = "";
-            foreach (var character in Alg)
+            foreach (var character in alg)
             {
                 if (Moves.Keys.Contains(character) && move.Length > 0)
                 {
                     moves.Add(move);
                     move = "";
                 }
-                move += character;
 
+                move += character;
             }
+
             moves.Add(move);
             if (reverse)
                 moves.Reverse();
+
             foreach (var action in moves)
             {
                 if (Move.Set.Contains(action[0]))
-                    PreformMove(action[0], reverse ? action.Length != 2: action.Length == 2);
+                    PreformMove(action[0], reverse ? action.Length != 2 : action.Length == 2);
                 else if (Rotation.Set.Contains((action[0])))
                     preformRotation(action[0], reverse ? !action.Contains('\'') : action.Contains('\''), action.Contains('2'));
             }
         }
-        private void SetDefs(SkewbImageConfiguration config)
+
+        void SetDefs(SkewbImageConfiguration config)
         {
             var defs = "";
             foreach (string face in Center.PieceNames)

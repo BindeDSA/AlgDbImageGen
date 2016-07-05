@@ -21,7 +21,6 @@ namespace PuzzleImageGenerator.Sq1.Simulation
             else if (configs.Case != null)
                 isValid = MoveSq1.ApplyAlg(configs.Case, this, invert: true);
 
-
             if (configs.StickerDefs == null)
                 configs.StickerDefs = GetPieceDefs();
 
@@ -70,9 +69,10 @@ namespace PuzzleImageGenerator.Sq1.Simulation
             foreach (var face in Faces)
             {
                 for (int i = 0; i < 12; i++)
-                    foreach (Piece piece in face)
+                    foreach (var piece in face)
                         if (piece.Position == i)
                             PieceDefs += piece.GetDefs() + ",";
+
                 PieceDefs = PieceDefs.Trim(',') + ";";
             }
 

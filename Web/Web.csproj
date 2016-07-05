@@ -82,7 +82,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image\failure.html" />
     <Content Include="Image\gui.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">

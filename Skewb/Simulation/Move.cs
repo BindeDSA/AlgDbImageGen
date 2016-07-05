@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PuzzleImageGenerator.Skewb.Simulation
+﻿namespace PuzzleImageGenerator.Skewb.Simulation
 {
     class Move
     {
-
         public static char[] Set = { 'R', 'r', 'F', 'f', 'L', 'l', 'B', 'b' };
         protected enum CornerIndices { URF, UFL, ULB, UBR, DFR, DLF, DBL, DRB }
         protected enum CenterIndices { U, R, F, D, L, B }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PuzzleImageGenerator.Sq1.Simulation
@@ -7,55 +8,51 @@ namespace PuzzleImageGenerator.Sq1.Simulation
     {
         public static bool ApplyAlg(string moves, VirtualSq1 sq1, bool invert = false)
         {
-            var Valid = true;
-            var adjustments =
-                moves
-                .Replace(" ", "")
-                .Replace("%20", "")
-                .Split('/');
+            var isValid = true;
+            var faceAdjustments = moves.Replace("%20", "").Replace(" ", "").Split('/');
 
             if (invert)
-                adjustments = adjustments.Reverse().ToArray();
+                faceAdjustments = faceAdjustments.Reverse().ToArray();
 
-            for (int i = 0; i < adjustments.Length; i++)
+            for (int i = 0; i < faceAdjustments.Length; i++)
             {
-                string adjustment = adjustments[i];
-                if (!adjustment.Equals(""))
+                var adjustment = CleanAdjustment(faceAdjustments[i]);
+                if (adjustment != "")
                 {
-                        adjustment = adjustment.Replace("(", "");
-                        adjustment = adjustment.Replace(")", "");
+                    var adjustInts = new List<int>();
 
-                        var adjustStrings = adjustment.Split(',');
-                        var adjustInts = new List<int>();
+                    foreach (var num in adjustment.Split(','))
+                    {
+                        var parsedInt = 0;
 
-                        foreach (var num in adjustStrings)
-                        {
-                            var parsedInt = 0;
-
-                            if (int.TryParse(num, out parsedInt))
-                                adjustInts.Add(invert ? parsedInt * -1 : parsedInt);
-                            else
-                                Valid = false;
-                        }
-
-                        if (adjustInts.Count == 2)
-                            AdjustLayers(adjustInts.ToArray(), sq1);
+                        if (int.TryParse(num, out parsedInt))
+                            adjustInts.Add(invert ? parsedInt * -1 : parsedInt);
                         else
-                            Valid = false;
+                            isValid = false;
+                    }
 
+                    if (adjustInts.Count == 2)
+                        AdjustLayers(adjustInts.ToArray(), sq1);
+                    else
+                        isValid = false;
                 }
 
-                if (i != adjustments.Length - 1 && !Slash(sq1)) // note: Slash() performs action on cube.
-                    Valid = false;
+                if (i != faceAdjustments.Length - 1 && sq1.ValidState())
+                    isValid = false;
+
+                Slash(sq1);
             }
-            return Valid;
+
+            return isValid;
         }
 
-        public static bool Slash(VirtualSq1 sq1)
+        static string CleanAdjustment(string v)
         {
-            if (!sq1.ValidState())
-                return false;
+            return v.Replace("(", "").Replace(")", "");
+        }
 
+        public static void Slash(VirtualSq1 sq1)
+        {
             List<Piece>[] swap = { new List<Piece>(), new List<Piece>() };
             for (int i = 0; i < sq1.Faces.Length; i++)
             {
@@ -73,7 +70,6 @@ namespace PuzzleImageGenerator.Sq1.Simulation
 
             sq1.Faces[1] = sq1.Faces[1].Concat(swap[0]).ToList();
             sq1.Faces[0] = sq1.Faces[0].Concat(swap[1]).ToList();
-            return true;
         }
 
         public static void AdjustLayers(int[] adjust, VirtualSq1 sq1)
@@ -82,6 +78,5 @@ namespace PuzzleImageGenerator.Sq1.Simulation
                 foreach (Piece piece in sq1.Faces[i])
                     piece.Position = (piece.Position + adjust[i] + 12) % 12;
         }
-
     }
 }

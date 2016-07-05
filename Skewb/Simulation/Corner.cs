@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PuzzleImageGenerator.Skewb.Simulation
+﻿namespace PuzzleImageGenerator.Skewb.Simulation
 {
-    class Corner : Piece
+    public class Corner : Piece
     {
-        new public static string[] PieceNames = { "urf", "ufl", "ulb", "ubr", "dfr", "dlf", "dbl", "drb" }; 
+        new public static string[] PieceNames = {
+            "urf", "ufl", "ulb", "ubr", "dfr", "dlf", "dbl", "drb"
+        };
+
         public int Orientation { get; private set; }
-        public Corner(string pieceName)
-            : base(pieceName)
+
+        public Corner(string pieceName) : base(pieceName)
         {
             Orientation = 0;
         }
+
         public static int[] GetStickerOrder(char face)
         {
             switch (face)

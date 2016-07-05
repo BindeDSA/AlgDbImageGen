@@ -21,8 +21,9 @@ namespace PuzzleImageGenerator.Sq1.Painter
         {
             var cubeshape = true;
             var counter = 0;
-            var Faces = configs.StickerDefs.Split(';');
-            foreach (var face in Faces)
+            var faces = configs.StickerDefs.Split(';');
+
+            foreach (var face in faces)
                 foreach (var piece in face.Split(','))
                 {
                     if (counter % 2 == 0 && piece[0] != 'c')
@@ -40,15 +41,13 @@ namespace PuzzleImageGenerator.Sq1.Painter
             return cubeshape;
         }
 
-
-
         public static string[][][] ParseDefs(string pieceDefString)
         {
-            var Faces = pieceDefString.Split(';');
+            var faces = pieceDefString.Split(';');
             var pieceDefs = new List<string[]>[] { new List<string[]>(), new List<string[]>() };
 
             var counter = 0;
-            foreach (var face in Faces)
+            foreach (var face in faces)
             {
                 var faceArray = face.Split(',');
                 foreach (var defs in faceArray)
@@ -75,6 +74,7 @@ namespace PuzzleImageGenerator.Sq1.Painter
                 }
                 counter++;
             }
+
             return new string[][][] { pieceDefs[0].ToArray(), pieceDefs[1].ToArray() };
         }
 
@@ -91,18 +91,20 @@ namespace PuzzleImageGenerator.Sq1.Painter
                     rotation += face[0].Equals("corner") ? 4 : 2;
                 }
             }
+
             PieceStickers = tempPieces;
         }
 
         public string GetSvgText()
         {
-            var svgText = "";
-            svgText += SvgHelper.GetHeader(Properties);
+            var svgText = SvgHelper.GetHeader(Properties);
+            
             foreach (var face in PieceStickers)
             {
                 foreach (var piece in face)
                 {
                     svgText += SvgHelper.GetPolygonText(piece.FaceCoords, Properties, fill: piece.Face);
+
                     if (piece.Sides != null)
                     {
                         if (!Properties.Stage.Equals("cubeshape"))
