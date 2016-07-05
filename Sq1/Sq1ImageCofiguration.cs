@@ -15,15 +15,15 @@ namespace PuzzleImageGenerator.Sq1
             // default values
             PlaceDOnRight = true;
             SliceSpacer = 0;
-            FaceSpacer = 10;
+            FaceSpacer = 5;
 
             int temp;
             foreach (var command in commands)
             {
                 switch (command.Key)
                 {
-                    case "placedonright": PlaceDOnRight = command.Value.Equals("horizontal"); break;
-                    case "pieces": StickerDefs = command.Value; break;
+                    case "transform": PlaceDOnRight = command.Value.Equals("horizontal"); break;
+                    case "sticker": StickerDefs = command.Value; break;
                     case "facespacer": if (int.TryParse(command.Value, out temp)) { FaceSpacer = temp; }; break;
                     case "slicespacer": if (int.TryParse(command.Value, out temp)) { SliceSpacer = temp; }; break;
                 }

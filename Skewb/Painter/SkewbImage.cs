@@ -18,7 +18,7 @@ namespace PuzzleImageGenerator.Skewb.Painter
         private void CreateFacees(SkewbImageConfiguration configs)
         {
             var stickerColors = ParseDefs(configs.StickerDefs);
-            if (stickerColors.Length == 6)
+            if (stickerColors.Length == 6 || (Properties.DFace && stickerColors.Length == 5))
             {
                 var tempFaces = new List<Face>();
                 for (int i = 0; i < 3; i++)

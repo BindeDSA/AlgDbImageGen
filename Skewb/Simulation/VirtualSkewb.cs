@@ -18,17 +18,12 @@ namespace PuzzleImageGenerator.Skewb.Simulation
             CleanSkewb();
             DefineMoves();
             if (configs.Moves != null)
-            {
-                preformAlg(configs.Moves);
-            }
+                preformAlg(configs.Moves);       
             else if (configs.Case != null)
-            {
                 preformAlg(configs.Case, reverse: true);
-            }
+
             if (configs.StickerDefs == null)
-            {
                 SetDefs(configs);
-            }
         }
         private void CleanSkewb()
         {

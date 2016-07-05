@@ -31,9 +31,9 @@ namespace PuzzleImageGenerator.Sq1.Painter
                 ? SideSize
                 : SideSize * 0.9;
 
-            ImageSize = PlaceDOnRight 
-                ? new Tuple<double, double>(ImageLength + SliceSpacer, (2 * ImageLength) + FaceSpacer)
-                : new Tuple<double, double>((2 * (ImageLength + SliceSpacer)) + FaceSpacer, ImageLength);
+            ImageSize = !configs.PlaceDOnRight       
+                ? new Tuple<double, double>(2 * (ImageLength + SliceSpacer) + FaceSpacer, ImageLength)
+                : new Tuple<double, double>(ImageLength + SliceSpacer, (2 * ImageLength) + FaceSpacer);
 
             var sideWidth = SideSize * 0.05; 
 
