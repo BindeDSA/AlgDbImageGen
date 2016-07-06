@@ -6,7 +6,6 @@ namespace PuzzleImageGenerator.Sq1
     public class Sq1ImageConfiguration : ImageConfiguration
     {
         public bool PlaceDOnRight { get; private set; } = true;
-        public int SliceSpacer { get; private set; } = 0;
         public int FaceSpacer { get; private set; } = 5;
 
         public Sq1ImageConfiguration(IDictionary<string, string> commands) 
@@ -28,11 +27,6 @@ namespace PuzzleImageGenerator.Sq1
                     case "facespacer":
                         if (int.TryParse(command.Value, out temp))
                             FaceSpacer = temp;
-                        break;
-
-                    case "slicespacer":
-                        if (int.TryParse(command.Value, out temp))
-                            SliceSpacer = temp;
                         break;
                 }
             }
