@@ -16,6 +16,10 @@ namespace PuzzleImageGenerator.Sq1.Simulation
 
             for (int i = 0; i < faceAdjustments.Length; i++)
             {
+                if (i != 0)
+                {
+                    Slash(sq1);
+                }
                 var adjustment = CleanAdjustment(faceAdjustments[i]);
                 if (adjustment != "")
                 {
@@ -40,7 +44,7 @@ namespace PuzzleImageGenerator.Sq1.Simulation
                 if (i != faceAdjustments.Length - 1 && sq1.ValidState())
                     isValid = false;
 
-                Slash(sq1);
+
             }
 
             return isValid;
