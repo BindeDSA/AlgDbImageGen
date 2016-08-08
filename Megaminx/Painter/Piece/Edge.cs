@@ -1,18 +1,15 @@
 ﻿using PuzzleImageGenerator.Shared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PuzzleImageGenerator.Mega.Painter.Piece
 {
-    class Edge : Piece
+    public class Edge : Piece
     {
         public Edge(MegaImageProp properties, int pieceNum)
         {
             GetStickers(properties, pieceNum);
         }
+
         public void GetStickers(MegaImageProp properties, int pieceNum)
         {
             var tempStickers = new List<Sticker>();

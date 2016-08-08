@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PuzzleImageGenerator.Shared.Helpers
 {
@@ -15,10 +11,6 @@ namespace PuzzleImageGenerator.Shared.Helpers
 
         public static double GetHypotenuse(double side)
         {
-            ///<summary>
-            /// returns hypotenuse of a isosceles triangle of lenth side
-            ///</summary>
-            
             return side * Math.Cos(Math.PI * 45 / 180);
         }
     }

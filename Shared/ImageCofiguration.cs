@@ -10,7 +10,7 @@ namespace PuzzleImageGenerator.Shared
         public int ImageLength { get; private set; }
         public string Stage { get; private set; }
 
-        public ImageConfiguration(IDictionary<string, string> commands)
+        protected ImageConfiguration(IDictionary<string, string> commands)
         {
             // default values
             ImageLength = 100;

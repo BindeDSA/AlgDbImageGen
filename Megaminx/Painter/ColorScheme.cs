@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PuzzleImageGenerator.Mega.Painter
+﻿namespace PuzzleImageGenerator.Mega.Painter
 {
-	class ColorScheme
+	public class ColorScheme
 	{
 		public static string[] faces = { "u", "f", "fl", "bl", "br", "br" };
 		public string[] Scheme = { "grey", "lime", "#FB8C00", "lightblue", "palegoldenrod", "deeppink" };
 
-		public ColorScheme()
-		{
-		}
+        public ColorScheme() { }
 
 		public ColorScheme(string[] scheme)
 		{
 			Scheme = scheme;
 		}
+
 		public string GetFace(string face)
 		{
 			switch (face)

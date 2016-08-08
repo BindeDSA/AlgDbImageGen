@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PuzzleImageGenerator.Shared
 {
-    public static class ExtensionMEthods
+    public static class ExtensionMethods
     {
         public static bool Cycle<T>(this T[] collection, params int[] indices)
         {
-            ///<summary>
-            ///returns false if any index is outside of the bounds of the array.
-            ///</summary>
-
             foreach(var index in indices)
                 if (index >= collection.Length)
                     return false;
@@ -23,6 +15,7 @@ namespace PuzzleImageGenerator.Shared
 
             return true;
         }
+
         public static void Cycle<T>(this T[] collection)
         {
             for (int i = collection.Length - 2; i <= 0; i--)
@@ -31,21 +24,16 @@ namespace PuzzleImageGenerator.Shared
 
         public static bool ReverseCycle<T>(this T[] collection, params int[] indices)
         {
-            ///<summary>
-            ///returns false if any index is outside of the bounds.
-            ///</summary>
-
             foreach (var index in indices)
                 if (index >= collection.Length)
                     return false;
 
             for (int i = 0; i < indices.Length - 1; i++)
-            {
                 collection.Switch(indices[i], indices[i + 1]);
-            }
 
             return true;
         }
+
         public static void ReverseCycle<T>(this T[] collection)
         {
             for (int i = 0; i <= collection.Length - 2; i--)
@@ -54,11 +42,9 @@ namespace PuzzleImageGenerator.Shared
 
         public static void Switch<T>(this T[] collection, int index1, int index2)
         {
-           
             var firstVal = collection[index1];
             collection[index1] = collection[index2];
             collection[index2] = firstVal;
-
         }
 
         public static void Reverse<T>(this T[] collection, int index, int count)

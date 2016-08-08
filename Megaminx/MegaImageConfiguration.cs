@@ -3,9 +3,10 @@ using PuzzleImageGenerator.Shared;
 
 namespace PuzzleImageGenerator.Mega
 {
-    class MegaImageConfiguration : ImageConfiguration
+    public class MegaImageConfiguration : ImageConfiguration
     {
         public string Scheme { get; private set; }
+
         public MegaImageConfiguration(IDictionary<string, string> commands)
             : base(commands)
         {

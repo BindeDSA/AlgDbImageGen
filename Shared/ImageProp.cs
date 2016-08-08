@@ -13,7 +13,7 @@ namespace PuzzleImageGenerator.Shared
         public CoordPair Center { get; protected set; }
         public Tuple<double, double> ImageSize { get; protected set; }
 
-        public ImageProp(ImageConfiguration configs)
+        protected ImageProp(ImageConfiguration configs)
         {
             ImageLength = configs.ImageLength;
             Stage = configs.Stage;

@@ -5,10 +5,11 @@ using PuzzleImageGenerator.Shared.Helpers;
 
 namespace PuzzleImageGenerator.Skewb.Painter
 {
-    class SkewbImage
+    public class SkewbImage
     {
         Face[] Faces;
         SkewbImageProp Properties;
+
         public SkewbImage(SkewbImageConfiguration configs)
         {
             Properties = new SkewbImageProp(configs);

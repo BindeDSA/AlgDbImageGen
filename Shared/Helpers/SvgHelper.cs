@@ -1,6 +1,4 @@
-﻿using PuzzleImageGenerator.Shared;
-
-namespace PuzzleImageGenerator.Shared.Helpers
+﻿namespace PuzzleImageGenerator.Shared.Helpers
 {
     public static class SvgHelper
     {

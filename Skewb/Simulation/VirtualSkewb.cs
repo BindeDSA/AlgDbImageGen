@@ -5,9 +5,8 @@ using PuzzleImageGenerator.Shared;
 
 namespace PuzzleImageGenerator.Skewb.Simulation
 {
-    class VirtualSkewb
+    public class VirtualSkewb
     {
-
         Corner[] Corners;
         Center[] Centers;
         Dictionary<char, Move> Moves = new Dictionary<char, Move>();
