@@ -16,7 +16,7 @@ namespace PuzzleImageGenerator.Sq1.Simulation
 
             for (int i = 0; i < faceAdjustments.Length; i++)
             {
-                if (i != 0)
+                if ((i != 0 && !invert) || (i != faceAdjustments.Length && invert))
                 {
                     Slash(sq1);
                 }
