@@ -40,6 +40,8 @@ namespace PuzzleImageGenerator.Web
                 case "mega":
                     return Mega.MegaImageGenerator.Generate(commands);
 
+                case "kilo":
+                    return Kilo.KiloImageGenerator.Generate(commands);
                 default:
                     return "";
             }

@@ -1,13 +1,13 @@
-﻿using PuzzleImageGenerator.Shared;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using PuzzleImageGenerator.Shared;
 
-namespace PuzzleImageGenerator.Mega
+namespace PuzzleImageGenerator.Kilo
 {
-    public class MegaImageConfiguration : ImageConfiguration
+    public class KiloImageConfiguration : ImageConfiguration
     {
         public string Scheme { get; private set; }
 
-        public MegaImageConfiguration(IDictionary<string, string> commands)
+        public KiloImageConfiguration(IDictionary<string, string> commands)
             : base(commands)
         {
             foreach (var command in commands)
