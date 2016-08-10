@@ -100,6 +100,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kilominx\Kilo.csproj">
+      <Project>{31542170-ba1c-42e9-b6bb-fc00fd80f488}</Project>
+      <Name>Kilo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Megaminx\Mega.csproj">
       <Project>{2049aca8-493a-447e-b75a-becb9bf35010}</Project>
       <Name>Mega</Name>
