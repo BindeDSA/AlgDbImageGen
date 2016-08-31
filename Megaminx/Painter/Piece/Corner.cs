@@ -24,7 +24,7 @@ namespace PuzzleImageGenerator.Mega.Painter.Piece
             angle += MegaImageProp.SMALLANGLE;
             tempCoords.Add(CoordPair.CartesianFromPolar(properties.ShortFaceDist, angle, properties.Center));
 
-			tempStickers.Add(new Sticker(tempCoords, properties.CornerColors[pieceNum][0]));
+			tempStickers.Add(new Sticker(tempCoords, properties.CornerStickerDefs[pieceNum][0]));
 
 			tempCoords.Clear();
 
@@ -38,7 +38,7 @@ namespace PuzzleImageGenerator.Mega.Painter.Piece
             angle -= MegaImageProp.SMALLANGLE + properties.SideAngle - MegaImageProp.LARGEANGLE / 2;
             tempCoords.Add(CoordPair.CartesianFromPolar(properties.ShortFaceDist, angle, properties.Center));
 
-			tempStickers.Add(new Sticker(tempCoords, properties.CornerColors[pieceNum][1]));
+			tempStickers.Add(new Sticker(tempCoords, properties.CornerStickerDefs[pieceNum][1]));
 
 			tempCoords.Clear();
 
@@ -52,7 +52,7 @@ namespace PuzzleImageGenerator.Mega.Painter.Piece
             angle += MegaImageProp.SMALLANGLE + properties.SideAngle - MegaImageProp.LARGEANGLE / 2;
             tempCoords.Add(CoordPair.CartesianFromPolar(properties.ShortFaceDist, angle, properties.Center));
 
-			tempStickers.Add(new Sticker(tempCoords, properties.CornerColors[pieceNum][2]));
+			tempStickers.Add(new Sticker(tempCoords, properties.CornerStickerDefs[pieceNum][2]));
 
 			Stickers = tempStickers.ToArray();
         }

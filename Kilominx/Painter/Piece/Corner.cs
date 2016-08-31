@@ -20,7 +20,7 @@ namespace PuzzleImageGenerator.Kilo.Painter.Piece
 
         private void SetStickers(int pieceNum)
         {
-            var stickerColors = _properties.CornerStickersDefs[pieceNum];
+            var stickerColors = _properties.CornerStickerDefs[pieceNum];
 
             Stickers = new Sticker.Sticker[] { new Sticker.Face(_properties, _centerAngle, stickerColors[0]),
                                                new Sticker.Side (_properties, _centerAngle, stickerColors[1], -1),
