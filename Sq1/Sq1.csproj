@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Painter\Pieces\Sticker.cs" />
     <Compile Include="Sq1ImageCofiguration.cs" />
     <Compile Include="Sq1ImageGenerator.cs" />
     <Compile Include="Simulation\MoveSq1.cs" />
@@ -65,6 +66,10 @@
       <Project>{dcdf90cc-51ea-4905-9cf4-7eda4a375675}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Painter\Pieces\Corner\" />
+    <Folder Include="Painter\Pieces\Edge\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
