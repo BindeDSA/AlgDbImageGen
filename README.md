@@ -1,4 +1,4 @@
-##Non NxN Cube Image Generator
+<h2>Non NxN Cube Image Generator<h2>
 <table>
     <tbody>
         <tr>
