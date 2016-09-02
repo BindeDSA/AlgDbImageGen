@@ -34,7 +34,7 @@ namespace PuzzleImageGenerator.Sq1.Painter
                 : new Tuple<double, double>(2 * (ImageLength) + FaceSpacer, ImageLength);
                 
 
-            var sideWidth = SideSize * 0.05; 
+            var sideWidth = SideSize * configs.FaceSize / 100; 
 
             LongSideDist = MathHelper.GetHypotenuse(SideSize);
             LongFaceDist = FaceSize * Math.Sin(Math.PI * 45 / 180);

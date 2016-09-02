@@ -1,18 +1,40 @@
 ﻿using System.Collections.Generic;
 using PuzzleImageGenerator.Shared;
+using PuzzleImageGenerator.Shared.Helpers;
+using System;
 
 namespace PuzzleImageGenerator.Sq1.Painter.Pieces
 {
-    class Sticker
+    public abstract class Sticker
     {
-        public CoordPair[] Coords { get; set; }
+        protected List<CoordPair> _coords = new List<CoordPair>();
+        public CoordPair[] Coords { get { return _coords.ToArray(); } }
+        public string Color;
+        public double PiecePosition;
+        public Sq1ImageProp Properties;
 
-        public string Color { get; private set; }
-
-        public Sticker(List<CoordPair> coords, string color)
+        public Sticker(int piecePosition, char color, Sq1ImageProp properties)
         {
-            Coords = coords.ToArray();
-            Color = color;
+            Color = ColorHelper.GetColorNameFromCharacter(color);
+            PiecePosition = piecePosition;
+            Properties = properties;
+        }
+
+        public void SetCoord(double dist, double coordAngle) {
+            CoordPair center = new CoordPair();
+            double angle = 0;
+
+            if (PiecePosition < 24)
+            {
+                center =  new CoordPair(Properties.ImageLength / 2, Properties.ImageLength / 2);
+                angle = (coordAngle % 24 + 1) * Math.PI * 15 / 180 ;
+            } else
+            {
+                center = new CoordPair(Properties.ImageLength / 2, Properties.ImageLength / 2, Properties.XOffset, Properties.YOffset);
+                angle = (coordAngle % 24 - 1) * Math.PI * 15 / 180;
+            }
+
+            _coords.Add(CoordPair.CartesianFromPolar(dist, angle, center));
         }
     }
 }

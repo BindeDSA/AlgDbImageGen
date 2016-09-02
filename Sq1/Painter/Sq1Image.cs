@@ -1,12 +1,15 @@
 ﻿using PuzzleImageGenerator.Shared.Helpers;
+using PuzzleImageGenerator.Sq1.Painter.Pieces.Corner;
+using PuzzleImageGenerator.Sq1.Painter.Pieces.Edge;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PuzzleImageGenerator.Sq1.Painter
 {
     public class Sq1Image
     {
         Sq1ImageProp Properties;
-        public List<PieceStickers>[] PieceStickers;
+        public List<Pieces.Piece> Pieces = new List<Painter.Pieces.Piece>();
 
         public Sq1Image(Sq1ImageConfiguration configs)
         {
@@ -14,110 +17,60 @@ namespace PuzzleImageGenerator.Sq1.Painter
 
             Properties = new Sq1ImageProp(configs, isCubeShape);
 
-            CreatePieces(ParseDefs(configs.StickerDefs));
+            CreatePieces(configs.StickerDefs);
         }
 
         static bool CheckIfCubeshape(Sq1ImageConfiguration configs)
         {
-            var cubeshape = true;
-            var counter = 0;
-            var faces = configs.StickerDefs.Split(';');
-
-            foreach (var face in faces)
-                foreach (var piece in face.Split(','))
-                {
-                    if (counter % 2 == 0 && piece[0] != 'c')
-                        cubeshape = false;
-
-                    if (counter % 2 == 1 && piece[0] != 'e')
-                        cubeshape = false;
-
-                    if (counter > 15)
-                        cubeshape = false;
-
-                    counter++;
-                }
-
-            return cubeshape;
+            var pieceDefsSplit = configs.StickerDefs.Split(',');
+            var cubeshapeForm = "cecececeecececec";
+            for (int i = 0; i < pieceDefsSplit.Length; i++)
+            {
+                if (pieceDefsSplit[i][0] != cubeshapeForm[i])
+                    return false;
+            }
+            return true;
         }
 
-        public static string[][][] ParseDefs(string pieceDefString)
+        public void CreatePieces(string pieceDefs)
         {
-            var faces = pieceDefString.Split(';');
-            var pieceDefs = new List<string[]>[] { new List<string[]>(), new List<string[]>() };
-
-            var counter = 0;
-            foreach (var face in faces)
+            var curPosition = 0;
+            foreach (var pieceDef in pieceDefs.Split(','))
             {
-                var faceArray = face.Split(',');
-                foreach (var defs in faceArray)
-                {
-                    var tempDefs = new List<string>();
-
-                    if (defs[0] == 'c')
-                        tempDefs.Add("corner");
-                    else if (defs[0] == 'e')
-                        tempDefs.Add("edge");
-                    else
-                        break;
-                    if (defs.Length > 1)
-                        tempDefs.Add(ColorHelper.GetColorNameFromCharacter(defs[1]));
-
-                    if (defs.Length > 2)
-                        tempDefs.Add(ColorHelper.GetColorNameFromCharacter(defs[2]));
-
-                    if (defs.Length > 3)
-                        tempDefs.Add(ColorHelper.GetColorNameFromCharacter(defs[3]));
-
-                    pieceDefs[counter].Add(tempDefs.ToArray());
-
-                }
-                counter++;
+                Pieces.Add(GetPiece(pieceDef, curPosition));
+                curPosition += pieceDef[0] == 'e' ? 2 : 4; // Each unit represents 15 degrees of rotation
             }
-
-            return new string[][][] { pieceDefs[0].ToArray(), pieceDefs[1].ToArray() };
         }
 
-        public void CreatePieces(string[][][] pieces)
+        private Pieces.Piece GetPiece(string pieceDef, int Position)
         {
-            var tempPieces = new List<PieceStickers>[] { new List<PieceStickers>(), new List<PieceStickers>() };
-            var rotation = 1;
-            for (int i = 0; i < pieces.Length; i++)
+            if (pieceDef[0] == 'c')
             {
-                var Face = pieces[i];
-                foreach (var face in Face)
-                {
-                    tempPieces[rotation / 24].Add(new PieceStickers(face, i == 1, rotation, Properties));
-                    rotation += face[0].Equals("corner") ? 4 : 2;
-                }
+                return new Corner(pieceDef.Substring(1), Position, Properties);
+            } else if(pieceDef[0] == 'e')
+            {
+                return new Edge(pieceDef.Substring(1), Position, Properties);
             }
-
-            PieceStickers = tempPieces;
+            return null;
         }
 
         public string GetSvgText()
         {
             var svgText = SvgHelper.GetHeader(Properties);
-            
-            foreach (var face in PieceStickers)
+
+            foreach (var piece in Pieces)
             {
-                foreach (var piece in face)
+                if (Properties.Stage.Equals("cubeshape"))
                 {
-                    svgText += SvgHelper.GetPolygonText(piece.FaceCoords, Properties, fill: piece.Face);
 
-                    if (piece.Sides != null)
+                    svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, Properties, fill: piece.Stickers[0].Color);
+
+                }
+                else
+                {
+                    foreach (var sticker in piece.Stickers)
                     {
-                        if (!Properties.Stage.Equals("cubeshape"))
-                        {
-                            for (int i = 0; i < piece.SideCoords.Length; i++)
-                            {
-                                string fill = piece.Sides.Length < i + 1
-                                    ? ColorHelper.GetColorNameFromCharacter(' ')
-                                    : piece.Sides[i];
-
-                                svgText += SvgHelper.GetPolygonText(piece.SideCoords[i], fill: fill);
-                            }
-                        }
+                        svgText += SvgHelper.GetPolygonText(sticker.Coords, Properties, fill: sticker.Color);
                     }
                 }
             }

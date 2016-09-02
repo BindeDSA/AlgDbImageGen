@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace PuzzleImageGenerator.Mega.Painter
 {
@@ -12,7 +13,8 @@ namespace PuzzleImageGenerator.Mega.Painter
 
         public ColorScheme(string[] scheme)
         {
-            Scheme = scheme;
+            Scheme = scheme.Select((colorCode) => (Regex.IsMatch(colorCode, @"\A\b[0-9a-fA-F]+\b\Z") ? "#" : "") + colorCode)
+                           .ToArray();
         }
 
         public string GetFace(char face)

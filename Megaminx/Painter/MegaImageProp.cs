@@ -45,12 +45,15 @@ namespace PuzzleImageGenerator.Mega.Painter
         {
             var scheme = new ColorScheme();
 
-            CenterColor = scheme.GetFace('u');
 
             if (schemeString != null)
             {
+                schemeString = schemeString.Replace(" ",  "")
+                                           .Replace("%20",  "");
                 scheme = new ColorScheme(schemeString.Split(','));
+
             }
+            CenterColor = scheme.GetFace('u');
 
             // default solved cube
             var cornerFaces = Enumerable.Range(1, 5)
@@ -61,31 +64,31 @@ namespace PuzzleImageGenerator.Mega.Painter
                         .Select(i => new[] { ColorScheme.Faces[0], ColorScheme.Faces[i] })
                         .ToArray();
 
-            if (stickerDefsString != null)
-            {
+            if (stickerDefsString == null)
+                stickerDefsString = "u;uf,ufl,ubl,ubr,ufr;uffl,uflbl,ublbr,ubrfr,ufrf";
 
-                stickerDefsString = stickerDefsString.ToLower()
+            stickerDefsString = stickerDefsString.ToLower()
                                                      .Replace("br", "R")
                                                      .Replace("bl", "L")
                                                      .Replace("fr", "r")
                                                      .Replace("fl", "l");
 
-                EdgeStickerDefs = stickerDefsString
-                    .Split(';')[1]
-                    .Split(',')
-                    .Select(PieceDef => PieceDef.ToCharArray()
-                        .Select(stickerFace => scheme.GetFace(stickerFace))
-                        .ToArray())
-                    .ToArray();
+            EdgeStickerDefs = stickerDefsString
+                .Split(';')[1]
+                .Split(',')
+                .Select(PieceDef => PieceDef.ToCharArray()
+                    .Select(stickerFace => scheme.GetFace(stickerFace))
+                    .ToArray())
+                .ToArray();
 
-                CornerStickerDefs = stickerDefsString
-                    .Split(';')[2]
-                    .Split(',')
-                    .Select(PieceDef => PieceDef.ToCharArray()
-                        .Select(stickerFace => scheme.GetFace(stickerFace))
-                        .ToArray())
-                    .ToArray();
-            }
+            CornerStickerDefs = stickerDefsString
+                .Split(';')[2]
+                .Split(',')
+                .Select(PieceDef => PieceDef.ToCharArray()
+                    .Select(stickerFace => scheme.GetFace(stickerFace))
+                    .ToArray())
+                .ToArray();
+
         }
 
     }

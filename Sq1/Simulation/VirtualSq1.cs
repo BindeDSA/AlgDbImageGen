@@ -63,9 +63,7 @@ namespace PuzzleImageGenerator.Sq1.Simulation
         {
             if (!ValidState())
                 CleanSq1();
-            if (this.Faces[1].First(i => i.Position == 0).Type == 'e')
-                MoveSq1.AdjustLayers(new int[] { 0, -1 }, this);
-            //MoveSq1.AdjustLayers(new int[] { 0, -1 }, this);
+
             var PieceDefs = "";
 
             foreach (var face in Faces)
@@ -74,11 +72,8 @@ namespace PuzzleImageGenerator.Sq1.Simulation
                     foreach (var piece in face)
                         if (piece.Position == i)
                             PieceDefs += piece.GetDefs() + ",";
-
-                PieceDefs = PieceDefs.Trim(',') + ";";
             }
-
-            return PieceDefs.Trim(';');
+            return PieceDefs.Trim(',');
         }
     }
 

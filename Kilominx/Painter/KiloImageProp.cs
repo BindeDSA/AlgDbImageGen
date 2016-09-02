@@ -43,9 +43,10 @@ namespace PuzzleImageGenerator.Kilo.Painter
                         .ToArray();
 
             // sticker formats expected in format: CharCharChar,CharCharChar,... where Char represents a face
-            if (stickerDefsString != null)
+            if (stickerDefsString == null)
             {
-
+                stickerDefsString = "uffl,uflbl,ublbr,ubrfr,ufrf";
+            }
                 stickerDefsString = stickerDefsString.ToLower()
                                                      .Replace("br", "R")
                                                      .Replace("bl", "L")
@@ -58,7 +59,6 @@ namespace PuzzleImageGenerator.Kilo.Painter
                         .Select(stickerFace => scheme.GetFace(stickerFace))
                         .ToArray())
                     .ToArray();
-            }
         }
 
         private void SetDistances()
