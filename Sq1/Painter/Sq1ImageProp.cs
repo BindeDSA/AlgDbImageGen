@@ -6,20 +6,20 @@ namespace PuzzleImageGenerator.Sq1.Painter
 {
     public class Sq1ImageProp : ImageProp
     {
-        public double SideSize { get; set; }
-        public double FaceSize { get; private set; }
-        public double XOffset { get; private set; }
-        public double YOffset { get; private set; }
-        public bool PlaceDOnRight { get; private set; }
-        public int FaceSpacer { get; private set; }
+        public double SideSize;
+        public double FaceSize;
+        public double XOffset;
+        public double YOffset;
+        public bool PlaceDOnRight;
+        public int FaceSpacer;
 
         public Sq1ImageProp(Sq1ImageConfiguration configs, bool cubeshape)
             :base(configs)
         {
             FaceSpacer = configs.FaceSpacer;
             
-            XOffset = configs.PlaceDOnRight ? FaceSpacer + ImageLength : 0;
-            YOffset = !configs.PlaceDOnRight ? FaceSpacer + ImageLength : 0;
+            XOffset = configs.transform == TransformType.horizontal ? FaceSpacer + ImageLength : 0;
+            YOffset = configs.transform == TransformType.horizontal ? 0 : FaceSpacer + ImageLength;
 
             SideSize = cubeshape 
                 ? ImageLength
@@ -27,21 +27,19 @@ namespace PuzzleImageGenerator.Sq1.Painter
 
             FaceSize = configs.Stage == "cubeshape"
                 ? SideSize
-                : SideSize * 0.9;
+                : SideSize * Math.Min(100, configs.FaceSize) / 100;
 
-            ImageSize = !configs.PlaceDOnRight
-                ? new Tuple<double, double>(ImageLength, (2 * ImageLength) + FaceSpacer)
-                : new Tuple<double, double>(2 * (ImageLength) + FaceSpacer, ImageLength);
+            ImageSize = configs.transform == TransformType.horizontal
+                ? new Tuple<double, double>(2 * (ImageLength) + FaceSpacer, ImageLength)
+                : new Tuple<double, double>(ImageLength, (2 * ImageLength) + FaceSpacer);
                 
 
-            var sideWidth = SideSize * configs.FaceSize / 100; 
+            var sideWidth = SideSize * 0.05; 
 
             LongSideDist = MathHelper.GetHypotenuse(SideSize);
             LongFaceDist = FaceSize * Math.Sin(Math.PI * 45 / 180);
             ShortFaceDist = FaceSize / (Math.Cos(Math.PI * 15 / 180) * 2);
             ShortSideDist = SideSize / 2 / Math.Cos(Math.PI * 15 / 180);
-
-            PlaceDOnRight = configs.PlaceDOnRight;
         }
     }
 }

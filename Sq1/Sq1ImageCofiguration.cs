@@ -5,9 +5,9 @@ namespace PuzzleImageGenerator.Sq1
 {
     public class Sq1ImageConfiguration : ImageConfiguration
     {
-        public bool PlaceDOnRight { get; private set; } = true;
-        public int FaceSpacer { get; private set; } = 5;
-        public int FaceSize { get; private set; } = 80;
+        public TransformType transform = TransformType.horizontal;
+        public int FaceSpacer  = 5;
+        public int FaceSize = 80;
 
         public Sq1ImageConfiguration(IDictionary<string, string> commands) 
             : base(commands)
@@ -18,7 +18,7 @@ namespace PuzzleImageGenerator.Sq1
                 switch (command.Key)
                 {
                     case "transform":
-                        PlaceDOnRight = command.Value.Equals("horizontal");
+                        transform = command.Value.Equals("horizontal") ? TransformType.horizontal : TransformType.vertical;
                         break;
 
                     case "stickers":
@@ -30,7 +30,7 @@ namespace PuzzleImageGenerator.Sq1
                             FaceSpacer = temp;
                         break;
 
-                    case "faceSize":
+                    case "facesize":
                         if (int.TryParse(command.Value, out temp))
                             FaceSize = temp;
                         break;
@@ -38,4 +38,6 @@ namespace PuzzleImageGenerator.Sq1
             }
         }
     }
+
+    public enum TransformType { horizontal, vertical}
 }

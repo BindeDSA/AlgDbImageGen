@@ -25,10 +25,8 @@ namespace PuzzleImageGenerator.Sq1.Painter
             var pieceDefsSplit = configs.StickerDefs.Split(',');
             var cubeshapeForm = "cecececeecececec";
             for (int i = 0; i < pieceDefsSplit.Length; i++)
-            {
                 if (pieceDefsSplit[i][0] != cubeshapeForm[i])
                     return false;
-            }
             return true;
         }
 
@@ -45,13 +43,11 @@ namespace PuzzleImageGenerator.Sq1.Painter
         private Pieces.Piece GetPiece(string pieceDef, int Position)
         {
             if (pieceDef[0] == 'c')
-            {
                 return new Corner(pieceDef.Substring(1), Position, Properties);
-            } else if(pieceDef[0] == 'e')
-            {
+            else if(pieceDef[0] == 'e')
                 return new Edge(pieceDef.Substring(1), Position, Properties);
-            }
-            return null;
+            else
+                return null;
         }
 
         public string GetSvgText()
