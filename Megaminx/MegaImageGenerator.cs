@@ -6,7 +6,11 @@ namespace PuzzleImageGenerator.Mega
     {
         public static string Generate(IDictionary<string, string> input)
         {
-            return new Painter.MegaImage(new MegaImageConfiguration(input))
+            var config = new MegaImageConfiguration(input);
+
+            new Simulation.VirtualMega(config);
+            
+            return new Painter.MegaImage(config)
                 .GetSvgText();
         }
     }

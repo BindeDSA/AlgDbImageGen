@@ -53,19 +53,14 @@ namespace PuzzleImageGenerator.Mega.Painter
                 scheme = new ColorScheme(schemeString.Split(','));
 
             }
-            CenterColor = scheme.GetFace('u');
+            
 
             // default solved cube
-            var cornerFaces = Enumerable.Range(1, 5)
-                        .Select(faceNum => new[] { ColorScheme.Faces[0], ColorScheme.Faces[faceNum], ColorScheme.Faces[(faceNum + 1) % 5] })
-                        .ToArray();
-
-            var edgeFaces = Enumerable.Range(1, 5)
-                        .Select(i => new[] { ColorScheme.Faces[0], ColorScheme.Faces[i] })
-                        .ToArray();
-
             if (stickerDefsString == null)
                 stickerDefsString = "u;uf,ufl,ubl,ubr,ufr;uffl,uflbl,ublbr,ubrfr,ufrf";
+
+
+            CenterColor = scheme.GetFace(char.Parse(stickerDefsString.Split(';')[0]));
 
             stickerDefsString = stickerDefsString.ToLower()
                                                      .Replace("br", "R")

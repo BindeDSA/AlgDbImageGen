@@ -19,6 +19,7 @@ namespace PuzzleImageGenerator.Sq1.Simulation
 
             if (configs.Moves != null)
                 isValid = MoveSq1.ApplyAlg(configs.Moves, this);
+
             else if (configs.Case != null)
                 isValid = MoveSq1.ApplyAlg(configs.Case, this, invert: true);
 

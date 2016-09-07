@@ -22,7 +22,7 @@ namespace PuzzleImageGenerator.Mega.Painter
             if (Faces.Contains(face))
                 return Scheme[Array.IndexOf(Faces, face)];
             else
-                return "white";
+                return "black";
         }
     }
 }

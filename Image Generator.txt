@@ -1,0 +1,174 @@
+Image Generator
+	General
+		Commands
+			puzzle
+				 Determines puzzle image to be generated, if this command does not exist or contain a valid value, no image will be generated.
+				 
+				 Options
+				 	sq1
+				 	skewb
+				 	mega
+				 	kilo
+
+				 Example
+				 	/generator?puzzle=kilo
+				 		a blank kilominx
+
+	Square-1
+		Commands
+			stickers
+			alg
+				Displays the state of the puzzle as if the provided moves we're applied on a solved cube
+
+				Example
+					/generator?puzzle=sq1s&alg=/(0,3)/(1,0)/(-3,0)/(-1,0)/(0,-3)/(1,0)/(3,0)/(-1,0)
+						/ (0,3) / (1,0) / (-3,0) / (-1,0) / (0,-3) / (1,0) / (3,0) / (-1,0) is a clockwise U perm on U, thus the displayed state is a counter-clockwise U perm
+			case
+				Displays the state of the puzzle that would be solved by the provided moves. effectively inverts the given alg
+
+				Example
+					/generator?puzzle=sq1s&case=/(0,3)/(1,0)/(-3,0)/(-1,0)/(0,-3)/(1,0)/(3,0)/(-1,0)
+						/ (0,3) / (1,0) / (-3,0) / (-1,0) / (0,-3) / (1,0) / (3,0) / (-1,0) is a clockwise U perm on U, thus the displayed state is a clockwise U perm
+
+			stickers
+				Defines the puzzle by piece, seperated by commas in the order shown below.
+					http://i.imgur.com/DJfFaPX.png
+ 				The pieces should be defines by first a character 'c' or 'e' representing the piece type followed by a characted for each sticker on a piece
+					 r - red
+					 o - orange
+					 g - green
+					 b - blue
+					 y - yellow
+					 w - white
+
+				cyog
+					http://i.imgur.com/MN7zmkt.png
+				 ebg
+				 	http://i.imgur.com/RKIc3Lr.png
+
+				 Example
+				 	/generator?puzzle=sq1&stickers=cggg,ebb,cggg,ebbc,cggg,ebbc,cggg,ebb,ebbc,cggg,ebbc,cggg,ebbc,cggg,ebbc,cggg
+				 		corners are green, edges are blue
+
+			stage
+				masks sticker colours that are not relevant to the provided stage
+
+				Options
+					full (default)
+					cubeshape
+
+				Example
+					/generator?puzzle=sq1&stage=cubeshape&case=/
+						all stickers are grey, and sides are not shown as non of this information is relevant during the cubeshape stage
+
+			transform
+				determines the location of the bottom puzzle face
+
+				Options
+					horizontal (default)
+					vertical
+
+				Example
+					/generator?puzzle=sq1&transform=vertical
+						bottom face is displayed below upper	
+
+			facesize
+				determines what percentage of each face is taken up by the U/D stickers.
+
+				Example
+					/generator?puzzle=sq1&facesize=50
+						the sides of the U/D layers are 50% the full face
+
+			facespacer
+				create space between the top and bottom face, defaults to 10 pixels
+
+				Example
+					/generator?puzzle=sq1&facespacer=0
+						no gap between faces
+	Skewb
+		Commands
+			alg
+				Displays the state of the puzzle as if the provided moves we're applied on a solved cube
+
+				Example
+					/generator?puzzle=skewb&alg=r'RrR'
+						r' R r R' is a sledge, thus the displayed state is hedge
+			case
+				Displays the state of the puzzle that would be solved by the provided moves. effectively inverts the given alg
+
+				Example
+					/generator?puzzle=skewb&case=r'RrR'
+						r' R r R' is a sledge, thus the displayed state is sledge
+
+			dface
+				determines whether the down face is show
+
+				Options
+					true (default)
+					false
+
+				Example
+					/generator?puzzle=skewb&dface=false
+						the down face is not shown
+
+	Megaminx
+		Commands
+			stickers
+				Defines the puzzle by piece. each piece is grouped with pieces of the same type, seperated by commas and piece types are seperated by semicolons in the order: center; edges; corners
+
+				Example
+				 	/generator?puzzle=mega&stickers=bl;ubr,ubr,ubr,ubr,ufr;fffr,fffr,fffr,fffr,fffr
+				 		corners are front(green) and front right(cream), edges are up(grey) and back right(pink)
+
+				 scheme
+				 	determines the sticker color of each face. sticker colors are comma seperated and use html color/ hex in the order:
+					u, f, fl, bl, fr, br
+
+					the default scheme: u = grey, f = lime, fl = FB8C00, bl = lightblue, fr = palegoldenrod, br = deeppink
+
+					Example
+						/generator?puzzle=mega&scheme=white,blue,FB8C00,lightblue,palegoldenrod,deeppink
+						U is white, F is blue
+			alg
+				Displays the state of the puzzle as if the provided moves we're applied on a solved cube
+
+				Example
+					/generator?puzzle=mega&alg=RUR'URU2'R'
+						R U R' U R U2' R' is a sune, thus the displayed state is an antisune
+			case
+				Displays the state of the puzzle that would be solved by the provided moves. effectively inverts the given alg.
+
+				Example
+					/generator?puzzle=mega&alg=RUR'URU2'R'
+						R U R' U R U2' R' is a sune, thus the displayed state is an sune
+
+	Kilominx
+		Commands
+			stickers
+				Defines the corner by corner, seperated by commas.
+
+				 Example
+				 	/generator?puzzle=mega&stickers=fffr,fffr,fffr,fffr,fffr
+				 		corners are front(green) and front right(cream)
+
+			scheme
+				determines the sticker color of each face. sticker colors are comma seperated and use html color/ hex in the order:
+				u, f, fl, bl, fr, br
+
+				the default scheme: u = grey, f = lime, fl = FB8C00, bl = lightblue, fr = palegoldenrod, br = deeppink
+
+				Example
+					/generator?puzzle=mega&scheme=white,blue,FB8C00,lightblue,palegoldenrod,deeppink
+					U is white, F is blue
+			alg
+				Displays the state of the puzzle as if the provided moves we're applied on a solved cube
+
+				Example
+					/generator?puzzle=kilo&alg=RUR'U'R'FR2U'R'U'RUR'F'
+						R U R' U' R' F R2 U' R' U' R U R' F' is a T perm, thus the displayed state is an inverse T perm(different on minx puzzles) is displayed
+			case
+				Displays the state of the puzzle that would be solved by the provided moves. effectively inverts the given alg.
+
+				Example
+					/generator?puzzle=kilo&alg=RUR'U'R'FR2U'R'U'RUR'F'
+						R U R' U' R' F R2 U' R' U' R U R' F' is a T perm, thus the displayed state is an T perm is displayed

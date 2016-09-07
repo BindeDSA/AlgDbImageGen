@@ -51,6 +51,14 @@
     <Compile Include="Painter\Piece\Sticker\Sticker.cs" />
     <Compile Include="Painter\Piece\Sticker\Face.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulation\Moves\BlMove.cs" />
+    <Compile Include="Simulation\Moves\BrMove.cs" />
+    <Compile Include="Simulation\Moves\FlMove.cs" />
+    <Compile Include="Simulation\Moves\FMove .cs" />
+    <Compile Include="Simulation\Moves\FrMove.cs" />
+    <Compile Include="Simulation\Moves\Move.cs" />
+    <Compile Include="Simulation\Moves\UMove.cs" />
+    <Compile Include="Simulation\VirtualKilo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj">

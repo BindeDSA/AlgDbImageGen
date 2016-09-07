@@ -6,7 +6,11 @@ namespace PuzzleImageGenerator.Kilo
     {
         public static string Generate(IDictionary<string, string> input)
         {
-            return new Painter.KiloImage(new KiloImageConfiguration(input))
+            var config = new KiloImageConfiguration(input);
+
+            new Simulation.VirtualKilo(config);
+
+            return new Painter.KiloImage(config)
                 .GetSvgText();
         }
     }
