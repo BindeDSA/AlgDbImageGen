@@ -11,10 +11,10 @@ namespace PuzzleImageGenerator.Sq1.Painter.Pieces.Corner
     {
         public CornerFace(int piecePosition, char color, Sq1ImageProp properties) : base(piecePosition, color, properties)
         {
-            SetCoord(0, piecePosition);
-            SetCoord(properties.ShortFaceDist, piecePosition);
-            SetCoord(properties.LongFaceDist, piecePosition + 2);
-            SetCoord(properties.ShortFaceDist, piecePosition + 4);
+            SetCoordFromPolar(0, piecePosition);
+            SetCoordFromPolar(properties.ShortFaceDist, piecePosition);
+            SetCoordFromPolar(properties.LongFaceDist, piecePosition + 2);
+            SetCoordFromPolar(properties.ShortFaceDist, piecePosition + 4);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace PuzzleImageGenerator.Sq1.Painter
 
         static bool CheckIfCubeshape(Sq1ImageConfiguration configs)
         {
-            var pieceDefsSplit = configs.StickerDefs.Split(',');
+            var pieceDefsSplit = configs.StickerDefs.Split(';')[0].Split(',');
             var cubeshapeForm = "cecececeecececec";
             for (int i = 0; i < pieceDefsSplit.Length; i++)
                 if (pieceDefsSplit[i][0] != cubeshapeForm[i])

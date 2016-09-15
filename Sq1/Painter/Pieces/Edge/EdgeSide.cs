@@ -11,10 +11,10 @@ namespace PuzzleImageGenerator.Sq1.Painter.Pieces.Edge
     {
         public EdgeSide(int piecePosition, char color, Sq1ImageProp properties) : base(piecePosition, color, properties)
         {
-           SetCoord(properties.ShortFaceDist, piecePosition);
-           SetCoord(properties.ShortSideDist, piecePosition);
-           SetCoord(properties.ShortSideDist, piecePosition + 2);
-           SetCoord(properties.ShortFaceDist, piecePosition + 2);
+           SetCoordFromPolar(properties.ShortFaceDist, piecePosition);
+           SetCoordFromPolar(properties.ShortSideDist, piecePosition);
+           SetCoordFromPolar(properties.ShortSideDist, piecePosition + 2);
+           SetCoordFromPolar(properties.ShortFaceDist, piecePosition + 2);
         }
     }
 }

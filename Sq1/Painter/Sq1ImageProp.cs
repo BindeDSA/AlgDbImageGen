@@ -12,6 +12,7 @@ namespace PuzzleImageGenerator.Sq1.Painter
         public double YOffset;
         public bool PlaceDOnRight;
         public int FaceSpacer;
+        public double AngleUnits = Math.PI * 15 / 180;
 
         public Sq1ImageProp(Sq1ImageConfiguration configs, bool cubeshape)
             :base(configs)
