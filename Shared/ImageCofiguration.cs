@@ -13,7 +13,7 @@ namespace PuzzleImageGenerator.Shared
         protected ImageConfiguration(IDictionary<string, string> commands)
         {
             // default values
-            ImageLength = 100;
+            ImageLength = 500;
             Stage = "full";
 
             int temp;

@@ -66,7 +66,7 @@ namespace PuzzleImageGenerator.Skewb.Painter
             {
                 foreach (var sticker in face.Stickers)
                 {
-                    svgText += SvgHelper.GetPolygonText(sticker.Coordinates, fill: sticker.Color);
+                    svgText += SvgHelper.GetPolygonText(sticker.Coordinates, Properties, fill: sticker.Color);
                 }
             }
 
