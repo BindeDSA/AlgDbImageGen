@@ -56,19 +56,11 @@ namespace PuzzleImageGenerator.Sq1.Painter
 
             foreach (var piece in Pieces)
             {
-                if (Properties.Stage.Equals("cubeshape"))
-                {
-
+                if (Properties.Stage.Equals("cubeshape") || Properties.Stage.Equals("obl"))
                     svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, Properties, fill: piece.Stickers[0].Color);
-
-                }
                 else
-                {
                     foreach (var sticker in piece.Stickers)
-                    {
                         svgText += SvgHelper.GetPolygonText(sticker.Coords, Properties, fill: sticker.Color);
-                    }
-                }
             }
             svgText += SvgHelper.GetFooter();
             return svgText;
