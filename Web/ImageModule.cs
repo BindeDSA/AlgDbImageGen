@@ -66,11 +66,10 @@ namespace PuzzleImageGenerator.Web
 
         public Response GetPng(Dictionary<string, string> commands)
         {
-            var svg = SvgDocument.FromSvg<SvgDocument>(GetSvgText(commands));
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Guid.NewGuid().ToString() + ".svg");
             string temporary = filePath + ".tmp.png";
+            File.WriteAllText(filePath, GetSvgText(commands));
             var svg = SvgDocument.Open(filePath);
-
             File.Delete(filePath);
             svg.Draw().Save(temporary, ImageFormat.Png);
             return new TempImageResponse(temporary, "image/png");
