@@ -129,7 +129,7 @@ namespace PuzzleImageGenerator.Skewb.Simulation
 
             foreach (var action in moves)
             {
-                if (action.Length == 0)
+                if (action.Length != 0)
                 {
                     if (Move.Set.Contains(action[0]))
                         PreformMove(action[0], reverse ? action.Length != 2 : action.Length == 2);
