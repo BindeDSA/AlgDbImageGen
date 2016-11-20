@@ -82,13 +82,16 @@ namespace PuzzleImageGenerator.Skewb.Simulation
             var rotation = Moves[rotationChar];
             if (reverse)
             {
-                Centers.ReverseCycle(rotation.Centers);
-                foreach (var cycle in rotation.Corners)
+                for (int i = 0; i < (twice ? 2 : 1); i++)
                 {
-                    Corners.ReverseCycle(cycle);
-                    if (rotationChar != 'y')
-                        for (int index = 0; index < cycle.Length; index++)
-                            Corners[cycle[index]].Rotate(index % 2 == 1);
+                    Centers.ReverseCycle(rotation.Centers);
+                    foreach (var cycle in rotation.Corners)
+                    {
+                        Corners.ReverseCycle(cycle);
+                        if (rotationChar != 'y')
+                            for (int index = 0; index < cycle.Length; index++)
+                                Corners[cycle[index]].Rotate(index % 2 == 1);
+                    }
                 }
             }
             else
@@ -134,7 +137,7 @@ namespace PuzzleImageGenerator.Skewb.Simulation
                     if (Move.Set.Contains(action[0]))
                         PreformMove(action[0], reverse ? action.Length != 2 : action.Length == 2);
                     else if (Rotation.Set.Contains((action[0])))
-                        preformRotation(action[0], reverse ? !action.Contains('\'') : action.Contains('\''), action.Contains('2'));
+                        preformRotation(action[0], reverse != action.Contains('\''), action.Contains('2'));
                 }
             }
         }
