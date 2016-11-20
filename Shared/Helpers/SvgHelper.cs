@@ -4,7 +4,7 @@
     {
         public static string GetHeader(ImageProp properties)
         {
-            return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox =\"0 0" + properties.ImageSize.Item1 + " " +
+            return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox =\"0 0 " + properties.ImageSize.Item1 + " " +
                 properties.ImageSize.Item2 + "\" preserveAspectRatio=\"xMidYMid meet\">\n\n\t<g>\n";
         }
 
