@@ -10,6 +10,7 @@ namespace PuzzleImageGenerator.Sq1.Painter.Pieces.Corner
     {
         private CornerFace Face;
         private CornerSide[] Sides = { };
+        public override PieceType Type { get { return PieceType.Corner; } }
         public override Sticker[] Stickers
         {
             get { return new Sticker[] { Face, Sides[0], Sides[1] }; }

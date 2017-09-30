@@ -4,6 +4,7 @@
     {
         private EdgeFace Face;
         private EdgeSide Side;
+        public override PieceType Type { get { return PieceType.Edge; } }
         public override Sticker[] Stickers
         {
             get { return new Sticker[] { Face, Side }; }

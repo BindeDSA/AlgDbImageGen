@@ -26,7 +26,7 @@ namespace PuzzleImageGenerator.Sq1.Painter
                 ? ImageLength
                 : MathHelper.GetHypotenuse(ImageLength);
 
-            FaceSize = configs.Stage == "cubeshape" || configs.Stage == "obl"
+            FaceSize = configs.Stage == "cubeshape" || configs.Stage == "obl" || configs.Stage == "eo" || configs.Stage == "co"
                 ? SideSize
                 : SideSize * Math.Min(100, configs.FaceSize) / 100;
 

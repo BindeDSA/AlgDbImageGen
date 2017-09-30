@@ -19,9 +19,6 @@
 
             polygonText = polygonText.Trim();
 
-            if (properties.Stage.Equals("cubeshape"))
-                fill = "lightgray";
-
             polygonText += "\" stroke=\"" + stroke + "\" stroke-width=\"" + properties.ImageLength / 400 + "\" fill=\"" + fill + "\"/>\"\n\n";
 
             return polygonText;
