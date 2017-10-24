@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pyra.Painter
+namespace PuzzleImageGenerator.Pyra.Simulation.Move
 {
-    class PyraImage
+    class MoveDefs
     {
     }
 }

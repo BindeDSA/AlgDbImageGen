@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PuzzleImageGenerator.Shared;
+using PuzzleImageGenerator.Sq1.Painter;
 
 namespace PuzzleImageGenerator.Sq1
 {
@@ -8,6 +9,7 @@ namespace PuzzleImageGenerator.Sq1
         public TransformType transform = TransformType.horizontal;
         public int FaceSpacer  = 5;
         public int FaceSize = 80;
+        public string ColorScheme;
 
         public Sq1ImageConfiguration(IDictionary<string, string> commands) 
             : base(commands)
@@ -33,6 +35,9 @@ namespace PuzzleImageGenerator.Sq1
                     case "facesize":
                         if (int.TryParse(command.Value, out temp))
                             FaceSize = temp;
+                        break;
+                    case "scheme":
+                        ColorScheme = command.Value;
                         break;
                 }
             }

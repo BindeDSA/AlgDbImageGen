@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Painter\ColorScheme.cs" />
     <Compile Include="Painter\Pieces\Corner\Corner.cs" />
     <Compile Include="Painter\Pieces\Corner\CornerFace.cs" />
     <Compile Include="Painter\Pieces\Corner\CornerSide.cs" />

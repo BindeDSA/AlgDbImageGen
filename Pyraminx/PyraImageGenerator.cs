@@ -6,7 +6,7 @@ namespace PuzzleImageGenerator.Pyra
     {
         public static string Generate(IDictionary<string, string> input)
         {
-            return new Painter.PyraImage(new PyraImageConfiguration(input))
+            return new Painter.SvgGenerator(new PyraImageConfiguration(input))
                 .GetSvgText();
         }
     }

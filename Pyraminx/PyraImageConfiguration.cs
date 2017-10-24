@@ -5,7 +5,7 @@ namespace PuzzleImageGenerator.Pyra
 {
     public class PyraImageConfiguration : ImageConfiguration
     {
-        public string Scheme { get; private set; }
+        public string ColorScheme { get; private set; }
 
         public PyraImageConfiguration(IDictionary<string, string> commands)
             : base(commands)
@@ -15,7 +15,7 @@ namespace PuzzleImageGenerator.Pyra
                 switch (command.Key)
                 {
                     case "scheme":
-                        Scheme = command.Value;
+                        ColorScheme = command.Value;
                         break;
                 }
             }

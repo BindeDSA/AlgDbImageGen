@@ -13,6 +13,7 @@ namespace PuzzleImageGenerator.Sq1.Painter
         public bool PlaceDOnRight;
         public int FaceSpacer;
         public double AngleUnits = Math.PI * 15 / 180;
+        public ColorScheme ColorScheme;
 
         public Sq1ImageProp(Sq1ImageConfiguration configs, bool cubeshape)
             :base(configs)
@@ -41,6 +42,18 @@ namespace PuzzleImageGenerator.Sq1.Painter
             LongFaceDist = FaceSize * Math.Sin(Math.PI * 45 / 180);
             ShortFaceDist = FaceSize / (Math.Cos(Math.PI * 15 / 180) * 2);
             ShortSideDist = SideSize / 2 / Math.Cos(Math.PI * 15 / 180);
+
+            if (configs.ColorScheme != null)
+            {
+                configs.ColorScheme = configs.ColorScheme.Replace(" ", "")
+                                           .Replace("%20", "");
+                ColorScheme = new ColorScheme(configs.ColorScheme.Split('-'));
+
+            } else
+            {
+                ColorScheme = new ColorScheme();
+            }
         }
+
     }
 }

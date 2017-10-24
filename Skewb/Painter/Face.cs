@@ -9,7 +9,7 @@ namespace PuzzleImageGenerator.Skewb.Painter
     {
         public Sticker[] Stickers { get; set; } // last sticker is the center
 
-        public Face(String[] stickersColors, double angle, CoordPair start, SkewbImageProp properties)
+        public Face(char[] stickersColors, double angle, CoordPair start, SkewbImageProp properties)
         {
             var tempStickers = new List<Sticker>();
 
@@ -22,7 +22,7 @@ namespace PuzzleImageGenerator.Skewb.Painter
                 large = !large;
             }
 
-            tempStickers.Add(new Sticker(stickersColors.Last(), tempStickers.ToArray()));
+            tempStickers.Add(new Sticker(stickersColors.Last(), tempStickers.ToArray(), properties));
             Stickers = tempStickers.ToArray();
         }
     }

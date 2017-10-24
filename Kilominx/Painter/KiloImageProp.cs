@@ -34,7 +34,9 @@ namespace PuzzleImageGenerator.Kilo.Painter
 
             if (schemeString != null)
             {
-                scheme = new ColorScheme(schemeString.Split(','));
+                schemeString = schemeString.Replace(" ", "")
+                                           .Replace("%20", "");
+                scheme = new ColorScheme(schemeString.Split('-'));
             }
 
             // default solved cube

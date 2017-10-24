@@ -143,6 +143,10 @@
     <Compile Include="TempImageResponse.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Four\Four.csproj">
+      <Project>{06075bb8-7152-43d9-b35d-9204b3e959dc}</Project>
+      <Name>Four</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kilominx\Kilo.csproj">
       <Project>{31542170-ba1c-42e9-b6bb-fc00fd80f488}</Project>
       <Name>Kilo</Name>
@@ -150,6 +154,10 @@
     <ProjectReference Include="..\Megaminx\Mega.csproj">
       <Project>{2049aca8-493a-447e-b75a-becb9bf35010}</Project>
       <Name>Mega</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pyraminx\Pyra.csproj">
+      <Project>{e96623ae-404f-4ed6-ab86-7f2fcd2b61d5}</Project>
+      <Name>Pyra</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{dcdf90cc-51ea-4905-9cf4-7eda4a375675}</Project>
@@ -162,6 +170,14 @@
     <ProjectReference Include="..\Sq1\Sq1.csproj">
       <Project>{c1276371-813e-4142-9095-968409727a1e}</Project>
       <Name>Sq1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Three\Three.csproj">
+      <Project>{7edf75bb-0764-4952-ba77-c329970862e6}</Project>
+      <Name>Three</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Two\Two.csproj">
+      <Project>{be72f9b6-5a44-4bc1-8f87-c12a938eaa94}</Project>
+      <Name>Two</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

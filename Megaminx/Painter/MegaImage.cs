@@ -35,7 +35,7 @@ namespace PuzzleImageGenerator.Mega.Painter
             {
                 foreach (var sticker in piece.Stickers)
                 {
-                    svgText += SvgHelper.GetPolygonText(sticker.Coords, Properties, fill: sticker.Color);
+                    svgText += SvgHelper.GetPolygonText(sticker.Coords, fill: sticker.Color);
                 }
             }
 

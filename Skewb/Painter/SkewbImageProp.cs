@@ -6,6 +6,8 @@ namespace PuzzleImageGenerator.Skewb.Painter
     class SkewbImageProp : ImageProp
     {
         public bool DFace { get; protected set; }
+        public ColorScheme ColorScheme;
+
         public SkewbImageProp(SkewbImageConfiguration configs)
             : base(configs)
         {
@@ -20,7 +22,22 @@ namespace PuzzleImageGenerator.Skewb.Painter
 
             Center = new CoordPair(ImageLength / 2, yAboveCenter);
 
+            AddColorScheme(configs.ColorScheme);
+        }
 
+        private void AddColorScheme(string schemeString)
+        {
+            if (schemeString != null)
+            {
+                schemeString = schemeString.Replace(" ", "")
+                                           .Replace("%20", "");
+                ColorScheme = new ColorScheme(schemeString.Split('-'));
+
+            }
+            else
+            {
+                ColorScheme = new ColorScheme();
+            }
         }
     }
 }

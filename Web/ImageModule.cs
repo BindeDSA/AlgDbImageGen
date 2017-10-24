@@ -4,13 +4,13 @@ using Nancy;
 using Svg;
 using System;
 using System.Drawing.Imaging;
-using System.Text;
 using System.IO;
-using SharpVectors.Converters;
+using System.Web;
+using System.Web.Caching;
 
 namespace PuzzleImageGenerator.Web
 {
-    public class ImageModule : Nancy.NancyModule
+    public class ImageModule : NancyModule
     {
         public ImageModule()
         {
@@ -77,10 +77,17 @@ namespace PuzzleImageGenerator.Web
 
         public Response GetSvg(Dictionary<string, string> commands)
         {
+            var requestString = Request.Url.Query;
+            var response = HttpContext.Current.Cache.Get(requestString);
 
-            return Response
+            if(response == null || commands.Any(i => i.Key == "nocache" && i.Value == "true"))
+            {
+                response = Response
                     .AsText(GetSvgText(commands))
                     .WithContentType("image/svg+xml");
+                HttpContext.Current.Cache.Insert(requestString, response, null, DateTime.Now.AddMinutes(1440d), Cache.NoSlidingExpiration);
+            }
+            return (Response)response;
         }
 
         public string GetSvgText(Dictionary<string, string> commands)
@@ -103,6 +110,17 @@ namespace PuzzleImageGenerator.Web
                     return Mega.MegaImageGenerator.Generate(commands);
                 case "kilo":
                     return Kilo.KiloImageGenerator.Generate(commands);
+                case "pyra":
+                    return Pyra.PyraImageGenerator.Generate(commands);
+                case "3":
+                case "three":
+                    return Three.ThreeImageGenerator.Generate(commands);
+                case "2":
+                case "two":
+                    return Two.TwoImageGenerator.Generate(commands);
+                case "4":
+                case "four":
+                    return Four.FourImageGenerator.Generate(commands);
                 default:
                     return "";
 

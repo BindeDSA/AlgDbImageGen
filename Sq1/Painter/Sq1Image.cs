@@ -59,37 +59,37 @@ namespace PuzzleImageGenerator.Sq1.Painter
                 switch (Properties.Stage)
                 {
                     case "cubeshape":
-                        svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, Properties, fill: "lightgrey");
+                        svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, fill: "lightgrey");
                         break;
                     case "eo":
                     case "obl":
-                        svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, Properties, fill: piece.Stickers[0].Color);
+                        svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, fill: piece.Stickers[0].Color);
                         break;
                     case "co":
                         if (piece.Type == Painter.Pieces.PieceType.Corner)
                         {
-                            svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, Properties, fill: piece.Stickers[0].Color);
+                            svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, fill: piece.Stickers[0].Color);
                         }
                         else
                         {
-                            svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, Properties, fill: "lightgrey");
+                            svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, fill: "lightgrey");
                         }
                         break;
                     case "cp":
                         if (piece.Type == Painter.Pieces.PieceType.Corner)
                         {
                             foreach (var sticker in piece.Stickers)
-                                svgText += SvgHelper.GetPolygonText(sticker.Coords, Properties, fill: sticker.Color);
+                                svgText += SvgHelper.GetPolygonText(sticker.Coords, fill: sticker.Color);
                         }
                         else
                         {
-                            svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, Properties, fill: piece.Stickers[0].Color);
-                            svgText += SvgHelper.GetPolygonText(piece.Stickers[1].Coords, Properties, fill: "lightgrey");
+                            svgText += SvgHelper.GetPolygonText(piece.Stickers[0].Coords, fill: piece.Stickers[0].Color);
+                            svgText += SvgHelper.GetPolygonText(piece.Stickers[1].Coords, fill: "lightgrey");
                         }
                         break;
                     default:
                         foreach (var sticker in piece.Stickers)
-                            svgText += SvgHelper.GetPolygonText(sticker.Coords, Properties, fill: sticker.Color);
+                            svgText += SvgHelper.GetPolygonText(sticker.Coords, fill: sticker.Color);
                         break;
                 }
             }

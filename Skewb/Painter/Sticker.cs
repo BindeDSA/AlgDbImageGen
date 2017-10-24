@@ -10,23 +10,23 @@ namespace PuzzleImageGenerator.Skewb.Painter
         public CoordPair[] Coordinates { get; private set; }
         public string Color { get; private set; }
 
-        public Sticker(string color, CoordPair Start, double angle, bool cornerSize, SkewbImageProp properties)
+        public Sticker(char color, CoordPair Start, double angle, bool cornerSize, SkewbImageProp properties)
         {
             /// <summary>
             /// Constructs corner.
             /// </summary>
-            
-            Color = color;
+
+            Color = properties.ColorScheme.GetFace(color);
             SetCoord(Start, angle, cornerSize, properties);
         }
 
-        public Sticker(string color, Sticker[] corners)
+        public Sticker(char color, Sticker[] corners, SkewbImageProp properties)
         {
             /// <summary>
             /// Constructs center from array of surrounding corners.
             /// </summary>
 
-            Color = color;
+            Color = properties.ColorScheme.GetFace(color);
             var tempCoordinates = new List<CoordPair>();
 
             foreach (var corner in corners)

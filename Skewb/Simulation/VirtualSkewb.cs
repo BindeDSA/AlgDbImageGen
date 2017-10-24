@@ -18,9 +18,9 @@ namespace PuzzleImageGenerator.Skewb.Simulation
             DefineMoves();
 
             if (configs.Moves != null)
-                preformAlg(configs.Moves);
+                PreformAlg(configs.Moves);
             else if (configs.Case != null)
-                preformAlg(configs.Case, reverse: true);
+                PreformAlg(configs.Case, reverse: true);
 
             if (configs.StickerDefs == null)
                 SetDefs(configs);
@@ -77,7 +77,7 @@ namespace PuzzleImageGenerator.Skewb.Simulation
             }
         }
 
-        void preformRotation(char rotationChar, bool reverse, bool twice)
+        void PreformRotation(char rotationChar, bool reverse, bool twice)
         {
             var rotation = Moves[rotationChar];
             if (reverse)
@@ -110,7 +110,7 @@ namespace PuzzleImageGenerator.Skewb.Simulation
             }
         }
 
-        void preformAlg(string alg, bool reverse = false)
+        void PreformAlg(string alg, bool reverse = false)
         {
             alg = alg.Replace(" ", "");
             var moves = new List<string>();
@@ -137,7 +137,7 @@ namespace PuzzleImageGenerator.Skewb.Simulation
                     if (Move.Set.Contains(action[0]))
                         PreformMove(action[0], reverse ? action.Length != 2 : action.Length == 2);
                     else if (Rotation.Set.Contains((action[0])))
-                        preformRotation(action[0], reverse != action.Contains('\''), action.Contains('2'));
+                        PreformRotation(action[0], reverse != action.Contains('\''), action.Contains('2'));
                 }
             }
         }

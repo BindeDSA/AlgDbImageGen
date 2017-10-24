@@ -34,14 +34,14 @@ namespace PuzzleImageGenerator.Skewb.Painter
                 Faces = tempFaces.ToArray();
             }
         }
-        private string[][] ParseDefs(string defs)
+        private char[][] ParseDefs(string defs)
         {
-            var tempStickerColors = new List<string[]>();
-            var tempFaceColors = new List<string>();
+            var tempStickerColors = new List<char[]>();
+            var tempFaceColors = new List<char>();
             int Counter = 1;
             foreach (var character in defs)
             {
-                tempFaceColors.Add(ColorHelper.GetColorNameFromCharacter(character));
+                tempFaceColors.Add(character);
                 if (Counter % 5 == 0)
                 {
                     Counter = 0;
@@ -66,7 +66,7 @@ namespace PuzzleImageGenerator.Skewb.Painter
             {
                 foreach (var sticker in face.Stickers)
                 {
-                    svgText += SvgHelper.GetPolygonText(sticker.Coordinates, Properties, fill: sticker.Color);
+                    svgText += SvgHelper.GetPolygonText(sticker.Coordinates, fill: sticker.Color);
                 }
             }
 

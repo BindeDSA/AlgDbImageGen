@@ -14,7 +14,7 @@ namespace PuzzleImageGenerator.Sq1.Painter.Pieces
 
         public Sticker(int piecePosition, char color, Sq1ImageProp properties)
         {
-            Color = ColorHelper.GetColorNameFromCharacter(color);
+            Color = properties.ColorScheme.GetFace(color);
             PiecePosition = piecePosition;
             Properties = properties;
         }

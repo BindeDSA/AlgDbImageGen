@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sq1", "Sq1\Sq1.csproj", "{C1276371-813E-4142-9095-968409727A1E}"
 EndProject
@@ -13,9 +13,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skewb", "Skewb\Skewb.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mega", "Megaminx\Mega.csproj", "{2049ACA8-493A-447E-B75A-BECB9BF35010}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyra", "Pyra\Pyra.csproj", "{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kilo", "Kilominx\Kilo.csproj", "{31542170-BA1C-42E9-B6BB-FC00FD80F488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Three", "Three\Three.csproj", "{7EDF75BB-0764-4952-BA77-C329970862E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Two", "Two\Two.csproj", "{BE72F9B6-5A44-4BC1-8F87-C12A938EAA94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Four", "Four\Four.csproj", "{06075BB8-7152-43D9-B35D-9204B3E959DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyra", "Pyraminx\Pyra.csproj", "{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +49,26 @@ Global
 		{2049ACA8-493A-447E-B75A-BECB9BF35010}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2049ACA8-493A-447E-B75A-BECB9BF35010}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2049ACA8-493A-447E-B75A-BECB9BF35010}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{31542170-BA1C-42E9-B6BB-FC00FD80F488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31542170-BA1C-42E9-B6BB-FC00FD80F488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31542170-BA1C-42E9-B6BB-FC00FD80F488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31542170-BA1C-42E9-B6BB-FC00FD80F488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EDF75BB-0764-4952-BA77-C329970862E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EDF75BB-0764-4952-BA77-C329970862E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EDF75BB-0764-4952-BA77-C329970862E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EDF75BB-0764-4952-BA77-C329970862E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE72F9B6-5A44-4BC1-8F87-C12A938EAA94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE72F9B6-5A44-4BC1-8F87-C12A938EAA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE72F9B6-5A44-4BC1-8F87-C12A938EAA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE72F9B6-5A44-4BC1-8F87-C12A938EAA94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06075BB8-7152-43D9-B35D-9204B3E959DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06075BB8-7152-43D9-B35D-9204B3E959DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06075BB8-7152-43D9-B35D-9204B3E959DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06075BB8-7152-43D9-B35D-9204B3E959DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

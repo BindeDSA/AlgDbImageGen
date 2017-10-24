@@ -50,7 +50,7 @@ namespace PuzzleImageGenerator.Mega.Painter
             {
                 schemeString = schemeString.Replace(" ",  "")
                                            .Replace("%20",  "");
-                scheme = new ColorScheme(schemeString.Split(','));
+                scheme = new ColorScheme(schemeString.Split('-'));
 
             }
             

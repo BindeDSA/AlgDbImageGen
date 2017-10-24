@@ -6,7 +6,7 @@ namespace PuzzleImageGenerator.Kilo.Painter
     public class ColorScheme
     {
         public static char[] Faces = { 'u', 'f', 'l', 'L', 'r', 'R' }; // Uppercase - back, lowercase - front
-        public string[] Scheme = { "grey", "lime", "#FB8C00", "lightblue", "palegoldenrod", "deeppink" }; // Default Scheme
+        public string[] Scheme = { "grey", "#00D800", "#FFA100", "lightblue", "palegoldenrod", "deeppink" }; // Default Scheme
 
         public ColorScheme() { }
 

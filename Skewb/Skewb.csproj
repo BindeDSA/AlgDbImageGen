@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Painter\ColorScheme.cs" />
     <Compile Include="Simulation\Center.cs" />
     <Compile Include="Simulation\Corner.cs" />
     <Compile Include="Simulation\Move.cs" />

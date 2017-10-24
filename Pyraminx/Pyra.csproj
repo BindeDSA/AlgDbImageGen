@@ -7,8 +7,8 @@
     <ProjectGuid>{E96623AE-404F-4ED6-AB86-7F2FCD2B61D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pyra</RootNamespace>
-    <AssemblyName>Pyra</AssemblyName>
+    <RootNamespace>PuzzleImageGenerator.Pyra</RootNamespace>
+    <AssemblyName>PuzzleImageGenerator.Pyra</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,13 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Painter\ColorScheme.cs" />
     <Compile Include="Painter\Pieces\Piece.cs" />
     <Compile Include="Painter\Pieces\Sticker.cs" />
     <Compile Include="Painter\PyraImage.cs" />
+    <Compile Include="Painter\SvgGenerator.cs" />
     <Compile Include="PyraImageConfiguration.cs" />
     <Compile Include="PyraImageGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Painter\PyraImageProp.cs" />
+    <Compile Include="Simulation\Enums\FaceType.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
